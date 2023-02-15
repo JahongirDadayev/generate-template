@@ -1,0 +1,20 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/restful_api
+    username: postgres
+    password: Jahongir2002
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+generate:
+  template:
+    title_uz: 'O`ZBEKISTON RESPUBLIKASI RAQOBATNI RIVOJLANTIRISH VA ISTEMOLCHILAR HUQUQLARINI HIMOYA QILISH QO`MITASI'
+    title_eng: 'COMPETITION PROMOTION AND CONSUMER PROTECTION COMMITTEE OF THE REPUBLIC OF UZBEKISTAN'
+    address: '100128, Toshkent sh., Labzak ko`chasi, 3-uy, Tel.:(998 71) 207-47-00, Tel.:(998 71) 241-92-04 e-mail: info@antimon.gov.uz. e-xat: antimon@exat.uz, www.antimon.gov.uz'
+    person_roll: 'Rais o`rinbosari-Chief Digital Officer'
+    person_name: 'F.Karabayev'
