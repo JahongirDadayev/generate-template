@@ -1,6 +1,6 @@
 package com.example.springsocial.service.serviceImpl;
 
-import com.example.springsocial.entity.DbMinistry;
+import com.example.springsocial.entity.Ministry;
 import com.example.springsocial.model.request.MinistryRequestDto;
 import com.example.springsocial.model.response.MinistryResponseDto;
 import com.example.springsocial.model.response.ResponseDto;
@@ -30,7 +30,7 @@ public class MinistryServiceImpl implements MinistryService {
 
     @Override
     public ResponseDto create(MinistryRequestDto requestDto) {
-        DbMinistry ministry = DbMinistry.builder()
+        Ministry ministry = Ministry.builder()
                 .name(requestDto.getName())
                 .build();
         ministryRepository.save(ministry);
@@ -46,7 +46,7 @@ public class MinistryServiceImpl implements MinistryService {
 
     @Override
     public ResponseDto update(MinistryRequestDto requestDto) {
-        DbMinistry ministry = DbMinistry.builder()
+        Ministry ministry = Ministry.builder()
                 .id(requestDto.getId())
                 .name(requestDto.getName())
                 .build();

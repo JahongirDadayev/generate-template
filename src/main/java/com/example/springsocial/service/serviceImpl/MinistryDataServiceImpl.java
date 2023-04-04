@@ -1,7 +1,7 @@
 package com.example.springsocial.service.serviceImpl;
 
-import com.example.springsocial.entity.DbMinistry;
-import com.example.springsocial.entity.DbMinistryData;
+import com.example.springsocial.entity.Ministry;
+import com.example.springsocial.entity.MinistryData;
 import com.example.springsocial.model.request.MinistryDataRequestDto;
 import com.example.springsocial.model.response.MinistryDataResponseDto;
 import com.example.springsocial.model.response.MinistryResponseDto;
@@ -19,13 +19,13 @@ public class MinistryDataServiceImpl implements MinistryDataService {
     @Override
     public ResponseDto getViaMinistryId(Long ministryId) {
         return ResponseDto.builder()
-                .data(ministryDataRepository.findByDbMinistry_Id(ministryId).stream()
+                .data(ministryDataRepository.findByMinistry_Id(ministryId).stream()
                         .map(ministryData -> MinistryDataResponseDto.builder()
                                 .id(ministryData.getId())
                                 .data(ministryData.getData())
                                 .ministry(MinistryResponseDto.builder()
-                                        .id(ministryData.getDbMinistry().getId())
-                                        .name(ministryData.getDbMinistry().getName())
+                                        .id(ministryData.getMinistry().getId())
+                                        .name(ministryData.getMinistry().getName())
                                         .build()
                                 )
                                 .build()
@@ -37,9 +37,9 @@ public class MinistryDataServiceImpl implements MinistryDataService {
 
     @Override
     public ResponseDto create(MinistryDataRequestDto requestDto) {
-        DbMinistryData ministryData = DbMinistryData.builder()
+        MinistryData ministryData = MinistryData.builder()
                 .data(requestDto.getData())
-                .dbMinistry(DbMinistry.builder()
+                .ministry(Ministry.builder()
                         .id(requestDto.getMinistry().getId())
                         .build()
                 )
@@ -50,7 +50,7 @@ public class MinistryDataServiceImpl implements MinistryDataService {
                         .id(ministryData.getId())
                         .data(ministryData.getData())
                         .ministry(MinistryResponseDto.builder()
-                                .id(ministryData.getDbMinistry().getId())
+                                .id(ministryData.getMinistry().getId())
                                 .build()
                         )
                         .build()
@@ -61,10 +61,10 @@ public class MinistryDataServiceImpl implements MinistryDataService {
 
     @Override
     public ResponseDto update(MinistryDataRequestDto requestDto) {
-        DbMinistryData ministryData = DbMinistryData.builder()
+        MinistryData ministryData = MinistryData.builder()
                 .id(requestDto.getId())
                 .data(requestDto.getData())
-                .dbMinistry(DbMinistry.builder()
+                .ministry(Ministry.builder()
                         .id(requestDto.getMinistry().getId())
                         .build()
                 )
@@ -75,7 +75,7 @@ public class MinistryDataServiceImpl implements MinistryDataService {
                         .id(ministryData.getId())
                         .data(ministryData.getData())
                         .ministry(MinistryResponseDto.builder()
-                                .id(ministryData.getDbMinistry().getId())
+                                .id(ministryData.getMinistry().getId())
                                 .build()
                         )
                         .build()

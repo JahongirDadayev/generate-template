@@ -6,21 +6,20 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "db_ministry")
+@Entity(name = "db_ministry_data")
 @Builder
-public class DbMinistry {
+public class MinistryData {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "data", columnDefinition = "text")
+    private String data;
 
-    @OneToMany(mappedBy = "dbMinistry", cascade = CascadeType.REMOVE)
-    private List<DbMinistryData> dbMinistryData;
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.DETACH)
+    @JoinColumn(name = "db_ministry_id")
+    private Ministry ministry;
 }
